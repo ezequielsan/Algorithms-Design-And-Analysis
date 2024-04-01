@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Modelo de uso do MathJax (HTML+Latex)</title>
+
+  <!-- MATHJAX 3 (através da CDN) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- MATHJAX 3 (salvo no computador) -->
+  <!-- <script type="text/javascript" async src="../../../Aplicativos/MathJax-master/es5/tex-mml-chtml.js" async></script> -->
+</head>
+
+<body>
+
+  <p><span style="font-size: medium;"><strong>Obs.:</strong><strong> </strong>Quando um aluno pega uma resposta em um
+      livro ou na Internet, mas não sabe a razão da resposta estar correta, é muito comum que o avaliador também não
+      consiga determinar se a resposta está correta. Portanto, em todos os exercícios da disciplina, <strong>é
+        necessário fornecer na resposta todos os elementos que permitam que o avaliador conclua que sua resposta está
+        correta</strong>. Por exemplo, se você fornecer um algoritmo cuja corretude depende de um teorema que não foi
+      apresentado na disciplina, você precisa fornecer a demonstração do teorema, ou citar o artigo/livro/página web que
+      contém esta demonstração. <strong>Se a demonstração não for fornecida, o avaliador pode aceitar sua resposta se
+        conhecer o teorema, ou pode recusá-la se não conhecer.</strong></span></p>
+  <p></p>
+  <ol>
+    <li id="yui_3_17_2_1_1678840447697_65"><span style="font-size: medium;">Projete um algoritmo para calcular \(\lfloor
+        \sqrt{n} \rfloor\) utilizando apenas comandos de seleção, repetição e atribuição, e as quatro operações
+        aritméticas básicas. </span><span style="font-size: medium;">Obs.: Como apenas a parte inteira do valor raiz
+        quadrada é solicitado, use um algoritmo iterativo simples que testa todos os valores inteiros dentro de uma
+        faixa de valores possíveis.</span></li>
+    <li>
+      <p><span style="font-size: medium;">Considere a ordenação de \(n\) números armazenados no vetor \(A = \langle a_1,
+          a_2, \ldots, a_n \rangle\), localizando primeiro o menor elemento de \(A\) e permutando esse elemento com o
+          elemento contido em \(A[1]\). Em seguida, determine o segundo menor elemento </span><span
+          style="font-size: medium;">de \(A\) e permute-o com \(A[2]\). Continue dessa maneira para os primeiros \(n-1\)
+          elementos de \(A\). Escreva o pseudocódigo para esse algoritmo, conhecido como <strong>ordenação por
+            seleção</strong>. Forneça os tempos de execução \(T(n)\) do melhor caso e do pior caso da ordenação
+          por seleção. O cálculo de \(T(n)\) deve ser feito de modo formal, como foi realizado em sala para a ordenação
+          por inserção.</span></p>
+    </li>
+    <li>
+      <p><span style="font-size: medium;">Prove as seguintes afirmações:</span></p>
+      <ul>
+        <li>\( (n+1)^2 = O(n^2) \)</li>
+        <li>\( n^2-3n-18 = \Omega(n^2) \)</li>
+        <li>\( n^3-3n^2-n = \Omega(n^3) \)</li>
+        <li>\(\lg(100n^3+200n+300)^2 = O(\lg n)\)</li>
+
+      </ul>
+    </li>
+  </ol>
+
+</body>
+
+</html>
