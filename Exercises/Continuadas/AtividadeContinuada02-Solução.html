@@ -1,0 +1,282 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Modelo de uso do MathJax (HTML+Latex)</title>
+    <!-- MATHJAX 3 (através da CDN) -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- MATHJAX 3 (salvo no computador) -->
+    <!-- <script type="text/javascript" async src="../../../Aplicativos/MathJax-master/es5/tex-mml-chtml.js" async></script> -->
+</head>
+<body>
+    <div style="text-align: justify;">
+        <h1>Avalização Continuada 02 - Solução</h1>
+  
+      <ul>
+        <li>
+          <p><strong>Questão 1 (Partição).</strong> A entrada é uma lista \( L[1..n] \)
+            de números, com \(n \geq 1\). Lembre-se que os nossos arrays
+            nessa disciplina começam com o índice \(1\). O elemento \(L[1]\) é chamado de pivô. Seja \(k\)
+            o número de elementos de \(L\) com valor menor ou igual ao pivô.
+            Seu objetivo é especificar um algoritmo
+            de <strong>tempo linear</strong> \(\Theta(n)\) para reorganizar
+            os elementos de \(L\) de modo que as três condições a seguir
+            sejam satisfeitas:
+          <ul>
+            <li>O pivô \(L[1]\) seja reposicionado para a posição \(k\).</li>
+            <li>Os elementos com valor menor ou igual ao pivô sejam colocados nas \(k\)
+              primeiras posições.</li>
+            <li>Os elementos com valor maior que o pivô sejam colocados nas últimas \(n-k\) posições.</li>
+          </ul>
+          <p><strong>Obs. 1:</strong> Este problema poderia ser resolvido simplesmente ordenando a lista,
+            mas neste caso gastaria tempo \(\Theta(n\log{n})\).</p>
+          <p><strong>Obs. 2:</strong> Este algoritmo é utilizado pelo algoritmo de ordenação Quicksort.</p>
+  
+          <p>
+            <strong>Passos Básicos:</strong> Utilize dois índices \(i\) e \(j\).
+            O índice \(i\) vai da posição \(2\) em direção em final da lista, e o índice \(j\)
+            vai da última posição em direção ao início da lista. Em cada iteração, avançe o \(i\)
+            se \(L[i]\) é menor ou igual ao pivô. Caso contrário, avançe o \(j\) se \(L[j]\)
+            é maior que o pivô. Se nenhuma destas condições ocorrer, troque \(L[i]\) com \(L[j]\)
+            e avance \(i\) e \(j\). A repetição termina quando \(j &lt; i\).
+            Finalmente, reposicione o pivô de modo que apenas elementos maiores
+            que o pivô estejam à direita dele.
+          </p>
+  
+          <p><strong>Invariante de loop:</strong><br>
+            INV1: Todos os elementos nas posições menores que \(i\) possuem valor menor ou igual ao pivô.<br>
+            INV2: Todos os elementos nas posições maiores que \(j\) possuem valor maior que o pivô.
+          </p>
+          <p>
+          <ol type="a">
+            <li>
+                Forneça uma medida de progresso, e argumente que o algoritmo termina.
+                <p>
+                    <p style="font-style: italic;">Solução:</p>
+                    <b>Medida de Progresso: </b>Como medida de progresso podemos tomar o número de elementos
+                    considerados até então, isto é, o número de elementos comparados com
+                    o pivô. <br>
+
+                    <b>Execução Finita: </b>A cada iteração, temos que ou \(i\) é incrementado (se \(L[i] \leq \text{pivo}\))
+                    ou \(j\) é decrementado (se \(L[j] \gt \text{pivo}\)) ou ambos são incrementado e decrementado respectivamente, logo em alguma
+                    iteração teremos \(j \lt i\), que configura a condição de saída do laço.
+                </p>
+            </li>
+            <li>
+                Indique como estabelecer o invariante do loop, ou seja, quais ações
+                no código pré-loop tornam o invariante do loop verdadeiro na primeira iteração. Justifique.
+                <p>
+                    <p style="font-style: italic;">Solução:</p>
+                    <b>Estabeleça o invariante do laço: </b>Suponha que estamos no início da primeira iteração,
+                    então temos que \(i = 2\) e \(j = n\). Como só a um elemento cuja posição seja menor que \(i = 2\),
+                    e tal elemento é o próprio \(\text{pivo}\) temos que o INV1 é verdadeiro na primeira iteração.
+                    De maneira análoga, com o conjunto de elementos cujo índice sejam maior que \(j\) é vazio a
+                    INV2 é verdadeira por vacuidade.
+                    <br>
+                </p>
+
+            </li>
+            <li>
+                Qual o código do loop? Argumente que ele mantém o invariante do loop.
+
+                <p>
+                    <p style="font-style: italic;">Solução:</p>
+                    <b>Passos principais (código do laço): </b>Em cada iteração do laço,
+                    se \(L[i] \leq \text{pivo}\), a variável \(i\) é incrementada, caso contrário, 
+                    verifica se \(L[j] > \text{pivo}\), se a condição for satisfeita incrementa \(j\).
+                    Se nenhum das condições são satisfeitas, fazemos o swap de \(L[i]\) com \(L[j]\)
+                    e incrementamos \(i\) e \(j\).
+                    <br>
+
+                    <b>Mantenha a invariante do laço: </b>Suponha que o invariante de laço vale no início de alguma 
+                        iteração \(i = i'\) e \(j = j'\), com \(j' \gt i'\), tal que 
+                        \(L[1 \ldots i'-1] \leq \text{pivo}\) e \(L[j' + 1 \ldots n] \gt \text{pivo}\).
+                        Há três casos a considerar durante o laço \(\textbf{for}\).
+                        
+                        <ul>
+                            <li>
+                                caso 1: Se \(L[i'] \leq \text{pivo}\), então \(i'\) é incrementado e temos que 
+                                \(L[1 \ldots i'-1, i'] \leq \text{pivo}\). Mantendo assim a invariante INV1 verdadeira
+                                e a INV2 verdadeira uma vez que os valores da mesma não foram transformados.
+                            </li> <br>
+                            <li>
+                                caso 2: Se \(L[j'] \gt \text{pivo}\), então \(j'\) é decrementado e temos que 
+                                \(L[j', j'+1 \ldots n] \gt \text{pivo}\). Mantendo assim a invariante INV2
+                                verdadeira e INV1 verdadeira, uma vez que seus valores foram inalterados.
+                            </li> <br>
+                            <li>
+                                caso 3: Como nenhum dos casos acima se configura, temos que \(L[i'] \gt \text{pivo}\) e
+                                \(L[j'] \leq \text{pivo}\), e juntamente com as informações de que 
+                                \(L[1 \ldots i'-1] \leq \text{pivo}\) e \(L[j' + 1 \ldots n] \gt \text{pivo}\), fazemos o
+                                swap entre \(L[i']\) e \(L[j']\), de tal forma que obtemos
+                                \(L[1 \ldots i'-1, j'] \leq \text{pivo}\) e \(L[i', j' + 1 \ldots n] \gt \text{pivo}\).
+                            </li>
+                        </ul>
+                    Por fim, provado todos os casos, temos que os invariantes se mantém para o próxima iteração.
+                </p>
+            </li>
+            <li>
+                Argumente que o invariante do loop e a condição de saída garantem que,
+                assim que a execução sair do loop teremos \(j = i-1\).
+
+                <p>
+                    <p style="font-style: italic;">Solução:</p>
+                    <b>Condição de saída: </b>Ocorre quando \(j \lt i\).
+                    <br>
+                    A pré-condição nos garante que \(i \leq j\) antes de se iniciar o loop. 
+                    Os invariantes juntamente com o código do loop nos garante que
+                    a cada iteração algumas das variáveis \(i\) ou \(j\), ou ambas, são
+                    incrementadas em uma unidade. Logo, na última iteração, isto é, quando
+                    \(i = j\), temos que, ou \(i\) é incrementado e portanto, \(i = j + 1\) ou \(j\) é 
+                    incrementado, e portanto \(j = i - 1\);
+                </p>
+            </li>
+            <li>
+                Qual o código pós-loop? Argumente que as pós-condições são satisfeitas.
+
+                <p>
+                    <p style="font-style: italic;">Solução:</p>
+                    <b>Finalização: </b> <br>
+                    O invariante, aplicado a última iteração (i.e quando \(i = j\)), nos garante que: 
+                    <ul>
+                        <li>Todos os elementos nas posições menores que \(i\) possuem valor menor ou igual ao \(\text{pivo}\).</li>
+                        <li>Todos os elementos nas posições maiores que \(j\) possuem valor maior que o \(\text{pivo}\).</li>
+                    </ul>
+                    O código pós-loop consiste no swap do \(\text{pivo}\) (i.e \(L[1]\)) com \(L[j]\). 
+                    <br>
+                </p>
+            </li>
+            <li>
+                Forneça o pseudocódigo.
+
+                <p>
+                    <pre><code>
+                        Algoritmo: partition(A[], n):
+                            Input: Um array de inteiros A[1..n], com n >= 1
+                            Output: Um arranjo de A, tal que, A[2..i] <= A[1] < A[j..n]
+                        1   i = 1, j = n, aux, pivo = A[1];
+                        2   while i <= j 
+                        3       if A[i] <= pivo then
+                        4           i = i + 1
+                        5       else if A[j] > pivo then
+                        6           j = j - 1
+                        7       else 
+                        8           aux = A[i]
+                        9           A[i] = A[j]
+                        10          A[j] = aux
+                        11          i = i + 1
+                        12          j = j - 1
+                        13  A[1] = A[j]
+                        14  A[j] = pivo
+                      </code></pre>
+                </p>
+            </li>
+            <li>
+                Considere os casos especiais a seguir e indique, caso necessário,
+              quais adaptações devem ser feitas no algoritmo para atendê-los.
+              (i) A lista tem apenas \(1\) elemento. (ii) Nenhum elemento é maior que o pivô.
+              (iii) Exceto o pivô, todo os outros elementos são maiores que o pivô.
+
+              <p>
+                <p style="font-style: italic;">Solução:</p>
+                
+                <ul>
+                    <li>(i). Poderíamos adaptar o código adicionando uma verificação do tamanho da entrada,
+                        ieto é, poderíamos verificar se a entrada tem entrada menor que 1 e usar uma declaração
+                        de retorno para não ser necessário executar todo o procedimento.
+                    </li>
+                    <li>(ii) e (iii). Para ambos os casos, essas configurações para o pivô nos levaria ao pior caso
+                        do algoritmo, onde o particionamento seria desbalanceado. Para esses casos seria aconselhável
+                        adotar um critério diferente para a escolha do pivô.
+                    </li>
+                </ul>
+                
+                <br>
+            </p>
+            </li>
+            <li>
+                Forneça a complexidade de tempo de pior caso em notação \(\Theta\).
+                
+                <p>
+                    <p style="font-style: italic;">Solução:</p>
+                    O pior caso se configura quando o vetor já estar ordenado, tanto em ordem 
+                    não-decrescente quanto em ordem não-crescente. Em ambos os casos haverá pelo menos \(n-1\) operações
+                    de incremento ou decremento, que é a operação que mais se repetirá na execução do algoritmo. Portanto,
+                    podemos dizer que a complexidade de pior caso é da ordem de \(\Theta(n)\)
+                </p>
+
+            </li>
+          </ol>
+          </p>
+          </p>
+        </li>
+  
+        <li>
+          <p><strong>Questão 2:</strong> Determine a complexidade do algoritmo abaixo
+            em função do valor de \(n\). Forneça também a complexidade de cada linha.
+            Cada execução de \(f(i)\) tem tempo \( \Theta(i) \), cada execução de \(g(j)\)
+            tem tempo \( \Theta(\log{n}) \), e cada execução de \(h(i)\) tem tempo \(\Theta(n^2)\).<br>
+          <pre><code>
+              algoritmo(n):
+              1     para i de 1 até n
+              2         f(i)
+              3         para j de i+1 até n
+              4             g(j)
+              5     para i de 1 até n
+              6         h(i)
+            </code></pre>
+          </p>
+
+          <p>
+            Primeiramente note que o laço da linha 1 é executado \(n + 1\) 
+            vezes: \(n\) vezes entrando no laço e levando mais uma execução 
+            adicional para testar a condição de parada e sair do laço. Assim,
+            temos que a linha 2 é executada \(n\) vezes, isto é, são feitas
+            \(n\) chamadas a função \(f(i)\), para \(i=1, 2, \ldots, n\). <br>
+            Agora , note que o laço das linhas 3-4 faz a variável \(j\) variar
+            de \(i+1\)  até \(n\). Logo, a linha 3 é executada um total de 
+            \(\sum_{i=1}^{n} (n-i) + 1\) vezes. A linha 4 é executada 
+            \(\sum_{i=1}^{n} (n-i) \) vezes, isto é, são feitas \(\sum_{i=1}^{n} (n-i) \)
+            chamadas a função \(g(j)\). Por fim, o laço das linhas 5-6 é executado
+            \(n+1\) vezes: \(n\) vezes entrando no laço e levando mais uma execução 
+            adicional para testar a condição de parada e sair do laço. Assim, temos
+            que a linha 6 é executada \(n\) vezes, isto é, são feitas \(\Theta(n²)\)
+            chamadas a função \(h(i)\). <br>
+            Todas essas informações são mostradas da tabela abaixo.
+            \begin{array} {|r|r|} \hline 
+              \text{linha} & \text{custo} & \text{#passos} \\ \hline 
+              1 & c_1 & n+1 \\ \hline 
+              2 & c_2 & \sum_{i=1}^{n} \Theta(i) \\ \hline 
+              3 & c_3 & \sum_{i=1}^{n} (n-i) + 1 \\ \hline 
+              4 & c_4 & \Theta(\lg n) \cdot  \sum_{i=1}^{n} (n-i) \\ \hline 
+              5 & c_5 & n+1 \\ \hline 
+              6 & c_6 & \Theta(n²) \cdot n \\ \hline  
+            \end{array}
+
+            Pelas propriedades so somatório e da notação \(\Theta\) temos que
+            $$
+              \sum_{i=1}^{n} \Theta(i) = \Theta(1) + \Theta(2) + \Theta(3) + 
+                \ldots + \Theta(n) = \Theta(n)
+            $$
+            Além disso, temos que
+            $$
+              \sum_{i=1}^{n} (n-i) = \sum_{i=1}^{n} i - \sum_{i=1}^{n} 1 = 
+              \frac{n(n+1)}{2} - n = \frac{n(n-1)}{2} \in \Theta(n^2)
+            $$
+            Tomando esse resultado acima, também obtemos que
+            $$
+              \sum_{i=1}^{n} (n-i) + 1 = \sum_{i=1}^{n} (n-i) + \sum_{i=1}^{n} 1 = 
+              \frac{n(n-1)}{2} + n = \frac{n(n+1)}{2} \in \Theta(n^2)
+            $$
+            Dado essa observações, podemos concluir olhando para a tabela que o termo
+            de maior complexidade vai ser o termo da linha 6 que é \(\Theta(n³)\). 
+            Portanto, a complexidade do algoritmo é da ordem de \(\Theta(n³)\).
+          </p>
+        </li>
+  
+      </ul>
+    </div>
+</body>
+</html>
