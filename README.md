@@ -11,4 +11,11 @@
 - [Logaritmos e Exponenciais (Prof. Críston)](https://www.youtube.com/watch?v=wgrX-i6kPbk&ab_channel=Cr%C3%ADstonSouza) 
 - [Notação Assintótica (Prof. Críston)](https://youtu.be/7OoTf3NEk18) 
 - [Demonstração das Propriedades da Notação Theta (Prof. Críston)](https://youtu.be/_8Sscx1WN9g) 
+- [Quantificadores Existencial e Universal (Prof. Críston)](https://youtu.be/iBGVcYIMvpA)
+- [Projeto e Corretude de Algoritmos Iterativos (Prof. Críston)](https://youtu.be/CfevmUZFbkY?si=OSBgjGQXL7f--hlG) 
 
+## Bibliografia Básica
+- LEISERSON, C.E., STEIN, C., RIVEST, R.L. & CORMEN T.H. Algoritmos: teoria e prática, Editora Campus, 3a. Edição, 2012.
+- KLEINBERG, J.; TARDOS, E. Algorithm Design, Addison Wesley, 2005.
+- MANBER, Udi. Introduction to Algorithms: A Creative Approach. Addison-Wesley. 1989
+- EDMONDS, Jeff. How to Think about algorithms. Cambridge University Press 2008 
