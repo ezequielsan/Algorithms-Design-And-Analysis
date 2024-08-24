@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Modelo de uso do MathJax (HTML+Latex)</title>
+
+  <!-- MATHJAX 3 (através da CDN) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- MATHJAX 3 (salvo no computador) -->
+  <!-- <script type="text/javascript" async src="../../../Aplicativos/MathJax-master/es5/tex-mml-chtml.js" async></script> -->
+</head>
+<body>
+  <p>
+  <strong>ATENÇãO 1:</strong> Essa atividade deve 
+  ser entregue no formato MathJax (html + Latex) 
+  diretamente pelo Moodle. 
+  </p>
+
+  
+  
+  <h1>Questões</h1>
+
+  <ul>
+    <li>
+      <p><strong>Questão 1 (Encontrar o máximo de um vetor)</strong> 
+        Considere o problema de encontrar o máximo em um vetor de \(n\) números.
+        Projete um algoritmo de divisão e conquista para o problema. 
+        Experimente duas abordagens: usar um subproblema de tamanho \(n-1\) e,
+        a segunda, dividir o subproblema em
+        dois subproblemas de tamanho aproximadamente \(n/2\). 
+        Qual a melhor abordagem? Qual tem a melhor 
+        complexidade no pior caso? (Justifique formalmente)
+      </p>
+      <p style="font-style: italic;">Solução:</p>
+       <!-- --------- Abordagem 1  -------------- -->
+    <strong>Abordagem 01</strong>
+
+    \[
+    \begin{array}{|l|l|l|}
+    \hline
+    \textbf{Max_element(arr, left, right)} & \text{Custo} & \text{Qntd. vezes} \\
+    \hline
+    \text{1. if left >= right  then retorna arr[left]} & c1 & 1 \\
+    \hline
+    \text{2. else} & c2 & 1 \\
+    \hline
+    \text{3.} \quad \text{ mid = (left+right)/2} & c3 & 1 \\
+    \hline
+    \text{4.} \quad \text{max_left = Max_element(arr, left, mid)} & c4 & T(n/2) \\
+    \hline
+    \text{5.} \quad \text{max_right = Max_element(arr, mid+1, right)} & c5 & T(n/2) \\
+    \hline
+    \text{6.} \quad \text{return max(max_left, max_right)} & c6 & 1\\
+    \hline
+    \end{array}
+    \]
+
+    <p> Pela tabela temos que  \(T(n) = 2T(\frac{n}{2})+1\). Vamos mostrar que \(T(n) = O(n \lg n) \)</b>.</p>
+    <p>Usando o teorema mestre, temos que  a primeira condição é satisfeita uma vez que 
+      \(n^{\log_a b} = n\) e \(f(n) = 1\) e por conseguinte \(f(n) = 1 \leq n^{1-\epsilon}\) para qualquer
+    \(\epsilon < 1\). Logo, \(T(n)\) é \(\Theta(n)\)</p>
+    
+    <!-- --------- Abordagem 2  -------------- -->
+
+   <strong>Abordagem 02</strong>
+
+    \[
+    \begin{array}{|l|l|l|}
+    \hline
+    \textbf{Max_element(arr, n)} & \text{Custo} & \text{Qntd. vezes} \\
+    \hline
+    \text{1. Se n == 1  entao retorna arr[0]} & c1 & 1 \\
+    \hline
+    \text{2. retorna max(arr[n-1], Max_element(arr[n-1]))} & c2 & T(n-1) \\
+    \hline
+    \end{array}
+    \]
+
+    <br>
+    <p>Ao analisar o algoritmo acima, é possível notar que:</p>
+
+    \begin{array} {|r|r|}\hline \text{Nível} & \text{Tamanho do Nó} & \text{Custo por Nó} \\ \hline 1 & n-1 & 1*n-1 \\ \hline 2 & n-2 & 1*n-2 \\ \hline i & n-i & 1*n-i \\ \hline  \end{array}
+
+    <br>
+    <p>Ao analisar o algoritmo acima, é possível notar que:</p>
+
+    \[ T(n) = 1+1+...+1*n-1+ \Theta(1)\]
+    \[ \leq c*n\]
+    <p>Onde \( \Theta(1) \) é o custo no último nível</p>
+    <br> <br> <br> <br>
+
+   <strong>Comparando as abordagens</strong>
+
+    <p>Ambas os algoritmos tem mesma complexidade</p>
+
+
+    </li>
+
+    <hr>
+
+    <li>
+      <p><strong>Questão 2.</strong>  
+        O <strong>transposto</strong> do grafo direcionado \(G = (V, E)\) é o 
+        grafo \(G^T = (V, E^T)\), em que \( E^T = \{(v,u) \mid u,v \in V \text{ e } 
+        (u, v) \in E\} \). 
+        Assim, de um modo informal, podemos dizer que 
+        \(G^T\) é \(G\) com todas as suas arestas invertidas. 
+        Descreva (forneça)
+        algoritmos eficientes para calcular \(G^T\) a partir de \(G\), 
+        para as representações de lista de adjacências e matriz 
+        de adjacências de \(G\). Analise os tempos de execução dos seus dois algoritmos.
+        <br><br>As análises de complexidade feitas nessa questão não precisam ser feitas
+        de modo formal, podem ser feitas de modo informal. 
+        Só se certifique de que sejam o mais fiéis possíveis à 
+        complexidade real dos seus algoritmos.
+      </p>
+      <p style="font-style: italic;">Solução:</p>
+      <strong>Abordagem com Matriz de Adjacências</strong>
+
+    \[
+    \begin{array}{|l|l|l|}
+    \hline
+    \textbf{Transposed_graph(matrix, n)} & \text{Custo} & \text{Qntd. vezes} \\
+    \hline
+    \text{1. n == matrix.lenght} & c1 & 1 \\
+    \hline
+    \text{2. transposed_matrix = [[0] * n for _ in range(n)]} & c2 & n \\
+    \hline
+    \text{3. for u in range(n):} & c3 & n \\
+    \hline
+    \text{4.} \quad \text{for v in range(n):} & c4 & n² \\
+    \hline
+    \text{5.} \quad \quad \text{if matrix[u][v]==1} & c5 &  \\
+    \hline
+    \text{6.} \quad \quad \text{transposed_matrix[v][u] = 1} & c6 &  \\
+    \hline
+    \text{7. return transposed_matrix} & c7 & 1 \\
+    \hline
+    \end{array}
+    \]
+
+    <br>
+    <p>A <b>Linha 2</b> preenche a matrix que representa o grafo transposto com n linhas que possuem n elementos = 0.</p>
+    <br>
+    <h3><strong>Complexidade</strong></h3>
+    <p>Temos uma complexidade de tempo de n², já que percorremos todos os pares de vértices (u,v).</p>
+    
+     <!-- --------- Abordagem Listas -------------- -->
+     <strong>Abordagem com Lista de Adjacências</strong>
+
+     \[
+     \begin{array}{|l|l|l|}
+     \hline
+     \textbf{Transposed_graph(graph)} & \text{Custo} & \text{Qntd. vezes} \\
+     \hline
+     \text{1. vertices = list(graph.keys())} & c1 & 1 \\
+     \hline
+     \text{2. transposed_list = {v: [] for v in vertices}} & c2 & n \\
+     \hline
+     \text{3. for u in vertices:} & c3 & n \\
+     \hline
+     \text{4.} \quad \text{for v in graph[u]:} & c4 & n² \\
+     \hline
+     \text{5.} \quad \quad \text{transposed_list[v].append(u)} & c5 &  \\
+     \hline
+     \text{6. return transposed_list} & c7 & 1 \\
+     \hline
+     \end{array}
+     \]
+
+     <br>
+     <p>*graph é um dicionário que contém uma chave (que representa o vértice) e um valor (que representa a lista de adjacências).</p>
+     
+     <p>A <b>Linha 2</b> inicializa transpose_list com listas vazias.</p>
+    </li>
+
+  <hr>
+
+  <li>
+    <p><strong>Questão 3.</strong> 
+      Nesta questão, vamos precisar da seguinte definição: 
+      Dado um grafo direcionado \(G=(V,E)\), um 
+      <strong>sorvedouro universal</strong> de \(G\) é um vértice de \(G\) 
+      com grau de entrada \(|V|-1\) e grau de saída \(0\).<br><br>
+      A maioria dos algoritmos em grafos que adota uma representação 
+      por matriz de adjacências como entrada exige o tempo \(O(V^2)\), 
+      mas há algumas exceções. 
+      Mostre como determinar se um grafo direcionado \(G\) contém
+      um sorvedouro universal no tempo \(O(V)\), 
+      dada como entrada uma matriz de adjacências para \(G\).<br><br>
+      A análise de complexidade feita nessa questão não precisa ser feita
+      de modo formal, pode ser feita de modo informal. 
+      Só se certifique de que seja o mais fiél possível à 
+      complexidade real do seu algoritmo.
+    </p>
+    <p style="font-style: italic;">Solução:</p>
+  </li>
+
+  </ul>
+
+</body>
+</html>

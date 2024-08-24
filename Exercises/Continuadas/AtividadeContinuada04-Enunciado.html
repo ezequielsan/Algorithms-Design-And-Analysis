@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Modelo de uso do MathJax (HTML+Latex)</title>
+
+  <!-- MATHJAX 3 (através da CDN) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- MATHJAX 3 (salvo no computador) -->
+  <!-- <script type="text/javascript" async src="../../../Aplicativos/MathJax-master/es5/tex-mml-chtml.js" async></script> -->
+</head>
+<body>
+  <p>
+  <strong>ATENÇãO:</strong> Essa atividade deve ser entregue 
+  no formato MathJax (html + Latex) 
+  diretamente pelo Moodle. Não serão aceitas soluções em papel ou escaneadas. 
+  Junto com esta atividade, estou fornecendo 
+  o arquivo que eu usei para prepará-la. Leia-o e veja como eu fiz para escrever estas questões.
+  Os alunos que ainda tiverem dúvida sobre o formato podem pedir ajuda no 
+  grupo do telegram.
+  </p>
+  
+  <h1>Questões</h1>
+
+  <ul>
+    <li>
+      <p><strong>Questão 1.</strong>
+        Use o método da árvore de recursão 
+        para dar um bom limitante superior assintótico
+        para a recorrência \(T(n) = 4T(\lfloor n/2 \rfloor)+cn\), 
+        onde \(c\) é uma constante.  
+        <br>
+        <strong>Atenção:</strong> Ao fornecer a suas respostas, 
+        não terá como desenhar uma árvore, então você terá que descrever
+        todos os detalhes da prova por meio de texto 
+        e, se for o caso, pode usar uma 
+        tabela contendo alguns dos cálculos. Semelhante ao que 
+        usei em sala de aula. É possível gerar tabelas para 
+        html + mathjax + latex facilmente, por exemplo, usando esse 
+        <a href="https://isaurssaurav.github.io/mathjax-table-generator/">link</a>.
+      </p>
+    </li>
+
+
+    <li>
+      <p><strong>Questão 2.</strong>
+        Verifique o limite superior obtido na questão 
+        anterior usando o método de substituição.
+      </p>
+    </li>
+
+
+    <li>
+    <p><strong>Questão 3.</strong> 
+      Use o método mestre para fornecer limites assintóticos 
+      restritos para as recorrências a seguir.
+      <ol type="a">
+        <li>\(T(n) = 2T(n/4) + 1\)</li>
+        <li>\(T(n) = 2T(n/4) + n^2\)</li>
+        <li>\(T(n) = 2T(n/4) + n\)</li>
+        <li>\(T(n) = 2T(n/4) + \sqrt{n}\)</li>
+      </ol>
+    </p></li>
+  
+    </ul>
+
+</body>
+</html>

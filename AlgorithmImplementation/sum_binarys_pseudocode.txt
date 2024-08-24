@@ -1,0 +1,25 @@
+Problema: adicionar dois inteiros binário com n bits cada,
+armazenados em dois arrays A e B e armazenar essa soma em 
+um array C de tamanho (n+1).
+
+Input: vetor de binários A[1..n] e B[1..n]
+Output: vetor binário C[1..n+1], tal que C = A + B.
+
+SUM-BINARYS(A, B)
+1.  carry = 0
+2.  create array C[A.length + 1];
+3.  for j = A.length to 1 
+4.    if carry == A[j] == 1 then
+5.      aux = 0
+6.      carry = 1
+7.    else
+8.      aux = carry + A[j]
+9.      carry = 0
+10.
+11.   if aux == B[j] == 1 then
+12.     carry = 1
+13.     C[j+1] = 0
+14.   else
+15.     C[j+1] = aux + B[j]
+16. C[j+1] = carry
+17. return C
