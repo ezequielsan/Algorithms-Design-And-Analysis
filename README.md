@@ -10,9 +10,13 @@
 ## Video Aulas Links
 - [Curso Projeto e Análise de Algoritmos Prof. Críston](https://youtube.com/playlist?list=PLuF_5gGZUY5zVnCN-H8k3RwKWBTwyr46A&si=uKZtnzAafawS32Qj) 
 - [Curso Projeto e Análise de Algoritmos Prof(a). Carla](https://youtube.com/playlist?list=PLncEdvQ20-mgGanwuFczm-4IwIdIcIiha&si=Y1NNT_x8K77ujfxL) 
+- [Resolução de problemas OBI](https://youtube.com/playlist?list=PL7sdfFUzrD1AJGGrA0Mn9vOusg8lXtBx3&si=Lct1e4cb2OCjr8Cr)
 - [Avaliação Experimental de Algoritmos](https://youtu.be/6PpWFo657A4?si=P_KNh_W6f_r38Fbz)
 - [Animated Visualization BFS Algorithm: Teaching Aid](https://youtu.be/x-VTfcmrLEQ?si=StGBWRb2hKEXajt9)
 - [Prova final do BFS](https://youtu.be/gLz45jGzDDo?si=QmBHFXg-GFz8Nzy_)
+- [Como enviar as resposta da sua atividade pelo Moodle](https://youtu.be/F7-OWV0VDq8?si=q8Bw92VKPRhlRO-u)
+- [Complexidade e problemas NP-completos](https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/NPcompleto.html)
+- [Quer saber o que é um NP-Completo?](https://youtu.be/9iSz5o4BFm8?si=QZQIxqaR3m-i5vHB)
 
 
 ## Bibliografia Básica
